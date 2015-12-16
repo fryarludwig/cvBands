@@ -26,5 +26,12 @@ def auth(request):
         return redirect('/login')
 
 
-class MainPage(request):
-    pass
+def MainPage(request):
+    return render(request, 'home.html', {})
+
+def Discover(request):
+    return render(request, 'discover.html', {})
+
+def ViewBand(request):
+    return render(request, 'view_band.html', {'band': requests.band})
+
