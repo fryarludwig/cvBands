@@ -17,22 +17,17 @@ Including another URLconf
 from django.conf.urls import url
 from django.conf.urls import include
 from django.contrib import admin
+from cvbands.views import (auth, main_page, discover, manage_band, view_event,
+    view_band, discover)
 
 urlpatterns = [
     url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}, name='login'),
     url(r'^auth/$', auth, name='auth'),
-    url(r'^$', MainPage.as_view(), name='home'),
-
-
-    url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}, name='login'),
-    url(r'^auth/$', auth, name='auth'),
-    url(r'^submit_link/$', submit_link, name='submit_link'),
-    url(r'^logout/$', logout_view, name='logout'),
-    url(r'^register/$', register, name='register'),
-    url(r'^accounts/register/$', register, name='register'),
-    url(r'^r/$', subreddit_view, name='subreddits'),
-    url(r'^r/(?P<sub>[\w]+)/$', subreddit_selector, name='subreddits'),
-    url(r'^discuss/(?P<link>[\w-]+)/$', link_discuss, name='links'),
-    url(r'^v/l/(?P<link_id>[\w-]+)/$', vote_link, name='links'),
-    url(r'^v/c/(?P<comment_id>[\w-]+)/$', vote_comment, name='links'),
+    url(r'^$', main_page, name='home'),
+    url(r'^home/$', main_page, name='home'),
+    url(r'^manage_band/$', manage_band, name='manage_band'),
+    url(r'^view_band/$', view_band='view_band'),
+    url(r'^view_event/$', view_event, name='view_event'),
+    url(r'^view_band/$', view_band, name='view_band'),
+    url(r'^discover/$', discover, name='discover'),
 ]

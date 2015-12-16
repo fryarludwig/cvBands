@@ -1,12 +1,8 @@
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
-from django.views.generic import ListView
-from django.template.defaultfilters import slugify
-from .models import Band, Event, Graphic, Video, Song, Album
+#from .models.bandModels import Band, Event, Graphic, Video, Song, Album
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
-from django.shortcuts import redirect, render
-from django.shortcuts import get_object_or_404
 from django.views.generic.edit import FormView
 from django.http import HttpResponse
 
@@ -26,12 +22,20 @@ def auth(request):
         return redirect('/login')
 
 
-def MainPage(request):
+def main_page(request):
     return render(request, 'home.html', {})
 
-def Discover(request):
-    return render(request, 'discover.html', {})
+def discover(request):
+    return render(request, 'discover.html', {}) #
 
-def ViewBand(request):
-    return render(request, 'view_band.html', {'band': requests.band})
+def view_band(request):
+    return render(request, 'view_band.html', {}) # {'band': requests.band})
+
+
+def manage_band(request):
+    return render(request, 'manage_band.html', {}) # {'band': requests.band})
+
+
+def view_event(request):
+    return render(request, 'view_event.html', {}) # {'event': requests.event})
 
