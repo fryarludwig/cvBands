@@ -2,37 +2,37 @@ from django.db import models
 from django.db.models import Count
 
 
-class imageModel(models.Manager):
+class Graphic(models.Manager):
     class Meta:
         app_label = 'cvBands'
-    url = ""
-    caption = ""
-    band = ""
-    event = ""
+    url = models.CharField(max_length=150)
+    caption = models.CharField(max_length=150)
+    band = models.ForeignKey(Band, related_name='Band')
+    event = models.ForeignKey(Event, related_name='Event')
 
-
-class videoModel(models.Manager):
+class Video(models.Manager):
     class Meta:
         app_label = 'cvBands'
-    url = ""
-    caption = ""
-    band = ""
-    event = ""
+    url = "models.CharField(max_length=150)
+    caption = models.CharField(max_length=150)
+    band = models.ForeignKey(Band, related_name='Band')
+    event = models.ForeignKey(Event, related_name='Event')
 
 
-class songModel(models.Manager):
+class Song(models.Manager):
     class Meta:
         app_label = 'cvBands'
-    url = ""
-    playCount = ""
-    band = ""
-    album = ""
+    url = models.CharField(max_length=150)
+    playCount = models.PositiveIntegerField()
+    band = models.ForeignKey(Band, related_name='Band')
+    album = models.ForeignKey(Album, related_name='Album')
 
 
-class albumModel(models.Manager):
+class Album(models.Manager):
     class Meta:
         app_label = 'cvBands'
-    date = ""
-    songs = []
-    coverArt = ""
-    purchaseUrl = ""
+    date = models.DateField()
+    songs = models.ForeignKey(Song, related_name='Song')
+    coverArt = models.ForeignKey(Graphic, related_name='Graphic')
+    purchaseUrl = models.CharField(max_length=150)
+    band = models.ForeignKey(Band, related_name='Band')
