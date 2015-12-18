@@ -16,17 +16,16 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.conf.urls import include
-from django.contrib import admin
 from cvbands.views import (auth, main_page, discover, manage_band, view_event,
     view_band, discover)
 
 urlpatterns = [
     url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}, name='login'),
     url(r'^auth/$', auth, name='auth'),
-    url(r'^$', main_page, name='home'),
-    url(r'^home/$', main_page, name='home'),
+    url(r'^$', main_page, name='main_page'),
+    url(r'^home/$', main_page, name='main_page'),
     url(r'^manage_band/$', manage_band, name='manage_band'),
-    url(r'^view_band/$', view_band='view_band'),
+    url(r'^view_band/$', view_band, name='view_band'),
     url(r'^view_event/$', view_event, name='view_event'),
     url(r'^view_band/$', view_band, name='view_band'),
     url(r'^discover/$', discover, name='discover'),

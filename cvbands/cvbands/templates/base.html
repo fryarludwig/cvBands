@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CVBands</title>
+  <link rel="stylesheet" href="style.css">
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div class="sidebar">
+    <h3>CVBands</h3>
+    <hr>
+    <ul class="list">
+      <li class="list__item"><a href="{urls cvbands : discover}">Discover</a></li>
+      <li class="list__item"><a href="{ urls cvbands : music }">Music</a></li>
+      <li class="list__item"><a href="{ urls cvbands : bands }">Bands</a></li>
+      <li class="list__item"><a href="{ urls cvbands : venues }">Venues</a></li>
+      <li class="list__item"><a href="{ urls cvbands : events }">Events</a></li>
+      <li class="list__item"><a href="{ urls cvbands : videos }">Videos</a></li>
+      <li class="list__item"><a href="{ urls cvbands : genres }">Genres</a></li>
+    </ul>
+
+  </div>
+
+    <div class="main">
+    <div class="main__menu">
+      <form action="">
+        <label for="">Search: </label><input type="text"/>
+      </form>
+      <ul class="menu">
+        {% if user.is_authenticated%}
+        <li><a href="{ urls cvbands : logout }">Log out</a></li>
+        {% else %}
+        <li><a href="{ urls cvbands : login }">Log in</a></li>
+        <li><a href="{ urls cvbands : }">Sign up</a></li>
+        {% endif %}
+      </ul>
+
+    </div>
+      {% block content %}
+      {% endblock %}
+    </div>
+
+</body>
+</html>
